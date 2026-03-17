@@ -1,0 +1,13 @@
+@import "tailwindcss";
+
+@theme {
+  --breakpoint-*: initial;
+  --breakpoint-tablet: 64rem;
+  --breakpoint-desktop: 84.375rem;
+}
+
+@layer base {
+  body {
+    font-family: "Be Vietnam Pro", sans-serif;
+  }
+}
