@@ -9,5 +9,30 @@
 @layer base {
   body {
     font-family: "Be Vietnam Pro", sans-serif;
+    color: #d2d5da;
+  }
+
+  button {
+    padding: 0.5rem;
+    border-radius: 0.75rem;
+    cursor: pointer;
+  }
+
+  input[type="checkbox"] {
+    appearance: none;
+    position: relative;
+    width: 1.5rem;
+    height: 1.5rem;
+    border: 2px solid #d2d5da;
+    /* vertical-align: -2px; */
+    border-radius: 3px;
+  }
+
+  input[type="checkbox"]:checked {
+    background-color: #4e80ee;
+  }
+
+  .button-background {
+    background-color: #282b30;
   }
 }
