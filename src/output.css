@@ -8,6 +8,8 @@
     --font-mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono",
       "Courier New", monospace;
     --spacing: 0.25rem;
+    --font-weight-normal: 400;
+    --font-weight-medium: 500;
     --radius-lg: 0.5rem;
     --radius-xl: 0.75rem;
     --default-font-family: var(--font-sans);
@@ -181,8 +183,8 @@
   .top-\[50\%\] {
     top: 50%;
   }
-  .top-\[55\%\] {
-    top: 55%;
+  .top-\[60\%\] {
+    top: 60%;
   }
   .right-\[5\%\] {
     right: 5%;
@@ -193,6 +195,12 @@
   .left-\[50\%\] {
     left: 50%;
   }
+  .mb-3 {
+    margin-bottom: calc(var(--spacing) * 3);
+  }
+  .mb-4 {
+    margin-bottom: calc(var(--spacing) * 4);
+  }
   .flex {
     display: flex;
   }
@@ -201,9 +209,6 @@
   }
   .w-\[90\%\] {
     width: 90%;
-  }
-  .w-\[95\%\] {
-    width: 95%;
   }
   .w-full {
     width: 100%;
@@ -231,8 +236,24 @@
   .appearance-none {
     appearance: none;
   }
+  .flex-col {
+    flex-direction: column;
+  }
+  .flex-wrap {
+    flex-wrap: wrap;
+  }
   .justify-center {
     justify-content: center;
+  }
+  .gap-1\.5 {
+    gap: calc(var(--spacing) * 1.5);
+  }
+  .space-y-6 {
+    :where(& > :not(:last-child)) {
+      --tw-space-y-reverse: 0;
+      margin-block-start: calc(calc(var(--spacing) * 6) * var(--tw-space-y-reverse));
+      margin-block-end: calc(calc(var(--spacing) * 6) * calc(1 - var(--tw-space-y-reverse)));
+    }
   }
   .overflow-hidden {
     overflow: hidden;
@@ -243,20 +264,20 @@
   .rounded-xl {
     border-radius: var(--radius-xl);
   }
-  .border {
-    border-style: var(--tw-border-style);
-    border-width: 1px;
-  }
   .border-2 {
     border-style: var(--tw-border-style);
     border-width: 2px;
+  }
+  .border-\[1\.5px\] {
+    border-style: var(--tw-border-style);
+    border-width: 1.5px;
   }
   .border-solid {
     --tw-border-style: solid;
     border-style: solid;
   }
-  .border-\[\#6C727F\] {
-    border-color: #6C727F;
+  .border-\[\#282B30\] {
+    border-color: #282B30;
   }
   .bg-\[\#1B1D1F\] {
     background-color: #1B1D1F;
@@ -273,14 +294,34 @@
   .p-2 {
     padding: calc(var(--spacing) * 2);
   }
-  .pr-16 {
-    padding-right: calc(var(--spacing) * 16);
+  .pt-3 {
+    padding-top: calc(var(--spacing) * 3);
   }
-  .pl-17 {
-    padding-left: calc(var(--spacing) * 17);
+  .pr-2\.5 {
+    padding-right: calc(var(--spacing) * 2.5);
   }
-  .text-center {
-    text-align: center;
+  .pr-19 {
+    padding-right: calc(var(--spacing) * 19);
+  }
+  .pl-2\.5 {
+    padding-left: calc(var(--spacing) * 2.5);
+  }
+  .pl-19 {
+    padding-left: calc(var(--spacing) * 19);
+  }
+  .text-\[0\.75rem\] {
+    font-size: 0.75rem;
+  }
+  .text-\[1rem\] {
+    font-size: 1rem;
+  }
+  .font-medium {
+    --tw-font-weight: var(--font-weight-medium);
+    font-weight: var(--font-weight-medium);
+  }
+  .font-normal {
+    --tw-font-weight: var(--font-weight-normal);
+    font-weight: var(--font-weight-normal);
   }
   .text-ellipsis {
     text-overflow: ellipsis;
@@ -323,13 +364,24 @@
     width: 1.5rem;
     height: 1.5rem;
     border: 2px solid #d2d5da;
+    vertical-align: -7px;
     border-radius: 3px;
   }
   input[type="checkbox"]:checked {
     background-color: #4e80ee;
   }
+}
+@layer utilities {
   .button-background {
     background-color: #282b30;
+  }
+  .label-size {
+    font-size: 0.75rem;
+    font-weight: 500;
+  }
+  .label-data, button {
+    font-size: 0.875rem;
+    font-weight: 600;
   }
 }
 @property --tw-translate-x {
@@ -367,10 +419,19 @@
   syntax: "*";
   inherits: false;
 }
+@property --tw-space-y-reverse {
+  syntax: "*";
+  inherits: false;
+  initial-value: 0;
+}
 @property --tw-border-style {
   syntax: "*";
   inherits: false;
   initial-value: solid;
+}
+@property --tw-font-weight {
+  syntax: "*";
+  inherits: false;
 }
 @property --tw-shadow {
   syntax: "*";
@@ -448,7 +509,9 @@
       --tw-rotate-z: initial;
       --tw-skew-x: initial;
       --tw-skew-y: initial;
+      --tw-space-y-reverse: 0;
       --tw-border-style: solid;
+      --tw-font-weight: initial;
       --tw-shadow: 0 0 #0000;
       --tw-shadow-color: initial;
       --tw-shadow-alpha: 100%;

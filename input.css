@@ -24,15 +24,28 @@
     width: 1.5rem;
     height: 1.5rem;
     border: 2px solid #d2d5da;
-    /* vertical-align: -2px; */
+    vertical-align: -7px;
     border-radius: 3px;
   }
 
   input[type="checkbox"]:checked {
     background-color: #4e80ee;
   }
+}
 
+@layer utilities {
   .button-background {
     background-color: #282b30;
+  }
+
+  .label-size {
+    font-size: 0.75rem;
+    font-weight: 500;
+  }
+
+  .label-data,
+  button {
+    font-size: 0.875rem;
+    font-weight: 600;
   }
 }

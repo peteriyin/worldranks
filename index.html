@@ -30,99 +30,106 @@
       </div>
 
       <div
-        class="w-[90%] absolute bg-[#1B1D1F] border border-[#6C727F] border-solid top-[50%] rounded-lg flex justify-center shadow-2xl"
+        class="w-[90%] absolute bg-[#1B1D1F] border-[1.5px] border-[#282B30] border-solid top-[50%] rounded-lg flex justify-center shadow-2xl flex-col pl-2.5 pr-2.5 space-y-6 pt-3"
       >
-        <div class="w-[95%]">
-          <div class="text-[#D2D5DA]">Found x countries</div>
-          <form action="#" method="post">
-            <div class="relative">
-              <svg
-                width="24"
-                height="24"
-                viewBox="0 0 24 24"
-                fill="none"
-                xmlns="http://www.w3.org/2000/svg"
-                class="absolute left-[12%] top-1/2 transform -translate-y-1/2"
-              >
-                <circle
-                  cx="11"
-                  cy="11"
-                  r="7"
-                  stroke="#6C727F"
-                  stroke-width="2"
-                />
-                <path
-                  d="M20 20L17 17"
-                  stroke="#6C727F"
-                  stroke-width="3"
-                  stroke-linecap="round"
-                />
-              </svg>
-              <input
-                type="search"
-                id="search"
-                name="q"
-                placeholder="Search by Name, Region, Subregion"
-                class="bg-[#282B30] w-full text-[#D2D5DA] p-2 rounded-xl overflow-hidden text-ellipsis whitespace-nowrap focus:outline-none pl-17 pr-16 placeholder:text-[#D2D5DA] text-center"
-              />
-            </div>
+        <div class="text-[#D2D5DA] font-medium text-[1rem]">
+          Found x countries
+        </div>
+        <div class="relative">
+          <svg
+            width="24"
+            height="24"
+            3
+            viewBox="0 0 24 24"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+            class="absolute left-[12%] top-1/2 transform -translate-y-1/2"
+          >
+            <circle cx="11" cy="11" r="7" stroke="#D2D5DA" stroke-width="2" />
+            <path
+              d="M20 20L17 17"
+              stroke="#D2D5DA"
+              stroke-width="3"
+              stroke-linecap="round"
+            />
+          </svg>
+          <input
+            type="search"
+            id="search"
+            name="q"
+            placeholder="Search by Name, Region, Subregion"
+            class="bg-[#282B30] w-full text-[#D2D5DA] p-2 rounded-xl overflow-hidden text-ellipsis whitespace-nowrap focus:outline-none pl-19 pr-19 placeholder:text-[#D2D5DA] text-[0.75rem] font-normal"
+          />
+        </div>
 
-            <div class="relative">
-              <div>Sort by</div>
-              <svg
-                width="16"
-                height="16"
-                viewBox="0 0 16 16"
-                fill="none"
-                xmlns="http://www.w3.org/2000/svg"
-                class="absolute top-[55%] right-[5%]"
-              >
-                <path d="M12 6L8 10L4 6" stroke="#6C727F" stroke-width="3" />
-              </svg>
-              <select
-                name="select"
-                id="select"
-                class="w-full p-2 border-2 border-[#6C727F] rounded-xl cursor-pointer appearance-none bg-[#1B1D1F] focus:outline-none"
-              >
-                <option value="population">Population</option>
-                <option value="name">Name</option>
-                <option value="region">Region</option>
-                <option value="subregion">Subregion</option>
-              </select>
-            </div>
+        <div class="relative">
+          <div class="label-size mb-3">Sort by</div>
+          <svg
+            width="16"
+            height="16"
+            viewBox="0 0 16 16"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+            class="absolute top-[60%] right-[5%]"
+          >
+            <path d="M12 6L8 10L4 6" stroke="#6C727F" stroke-width="3" />
+          </svg>
+          <select
+            name="select"
+            id="select"
+            class="w-full p-2 border-2 border-[#282B30] rounded-xl cursor-pointer appearance-none bg-[#1B1D1F] focus:outline-none label-data"
+          >
+            <option value="population">Population</option>
+            <option value="name">Name</option>
+            <option value="region">Region</option>
+            <option value="subregion">Subregion</option>
+          </select>
+        </div>
 
+        <div>
+          <div class="label-size mb-3">Region</div>
+          <div class="flex flex-wrap gap-1.5">
             <div>
-              <p>Region</p>
               <button
                 onclick="this.classList.toggle('button-background')"
                 type="button"
               >
                 Antarctic
               </button>
+            </div>
+            <div>
               <button
                 onclick="this.classList.toggle('button-background')"
                 type="button"
               >
                 Americas
               </button>
+            </div>
+            <div>
               <button
                 onclick="this.classList.toggle('button-background')"
                 type="button"
               >
                 Asia
               </button>
+            </div>
+            <div>
               <button
                 onclick="this.classList.toggle('button-background')"
                 type="button"
               >
                 Africa
               </button>
+            </div>
+            <div>
               <button
                 onclick="this.classList.toggle('button-background')"
                 type="button"
               >
                 Europe
               </button>
+            </div>
+            <div>
               <button
                 onclick="this.classList.toggle('button-background')"
                 type="button"
@@ -130,66 +137,62 @@
                 Oceania
               </button>
             </div>
+          </div>
+        </div>
 
-            <div>
-              <div>Status</div>
-              <div>
-                <label>
-                  <svg
-                    width="24"
-                    height="24"
-                    viewBox="0 0 24 24"
-                    fill="none"
-                    xmlns="http://www.w3.org/2000/svg"
-                    class="absolute"
-                  >
-                    <path
-                      d="M5 14L8.23309 16.4248C8.66178 16.7463 9.26772 16.6728 9.60705 16.2581L18 6"
-                      stroke="#D2D5DA"
-                      stroke-width="2"
-                      stroke-linecap="round"
-                    />
-                  </svg>
+        <div>
+          <div class="label-size mb-3">Status</div>
+          <div class="label-data mb-4">
+            <svg
+              width="24"
+              height="24"
+              viewBox="0 0 24 24"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+              class="absolute"
+            >
+              <path
+                d="M5 14L8.23309 16.4248C8.66178 16.7463 9.26772 16.6728 9.60705 16.2581L18 6"
+                stroke="#D2D5DA"
+                stroke-width="2"
+                stroke-linecap="round"
+              />
+            </svg>
 
-                  <input
-                    type="checkbox"
-                    id="united_nations"
-                    name="status"
-                    value="united_nations"
-                  />
-                  Member of the United Nations
-                </label>
-              </div>
+            <input
+              type="checkbox"
+              id="united_nations"
+              name="status"
+              value="united_nations"
+            />
+            Member of the United Nations
+          </div>
 
-              <div>
-                <label>
-                  <svg
-                    width="24"
-                    height="24"
-                    viewBox="0 0 24 24"
-                    fill="none"
-                    xmlns="http://www.w3.org/2000/svg"
-                    class="absolute"
-                  >
-                    <path
-                      d="M5 14L8.23309 16.4248C8.66178 16.7463 9.26772 16.6728 9.60705 16.2581L18 6"
-                      stroke="#D2D5DA"
-                      stroke-width="2"
-                      stroke-linecap="round"
-                    />
-                  </svg>
+          <div class="label-data mb-4">
+            <svg
+              width="24"
+              height="24"
+              viewBox="0 0 24 24"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+              class="absolute"
+            >
+              <path
+                d="M5 14L8.23309 16.4248C8.66178 16.7463 9.26772 16.6728 9.60705 16.2581L18 6"
+                stroke="#D2D5DA"
+                stroke-width="2"
+                stroke-linecap="round"
+              />
+            </svg>
 
-                  <input
-                    type="checkbox"
-                    name="status"
-                    id="independent"
-                    value="independent"
-                  />
-                  Independent State
-                </label>
-              </div>
-            </div>
-          </form>
+            <input
+              type="checkbox"
+              name="status"
+              id="independent"
+              value="independent"
+            />
+            Independent State
+          </div>
         </div>
       </div>
     </div>
