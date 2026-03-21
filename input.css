@@ -31,6 +31,18 @@
   input[type="checkbox"]:checked {
     background-color: #4e80ee;
   }
+
+  th {
+    border-bottom: 2px solid #282b30;
+  }
+
+  td {
+    padding-top: 18px;
+  }
+
+  th {
+    text-align: left;
+  }
 }
 
 @layer utilities {
@@ -38,13 +50,15 @@
     background-color: #282b30;
   }
 
-  .label-size {
+  .label-size,
+  th {
     font-size: 0.75rem;
     font-weight: 500;
   }
 
   .label-data,
-  button {
+  button,
+  td {
     font-size: 0.875rem;
     font-weight: 600;
   }
