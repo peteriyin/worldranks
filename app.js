@@ -1,10 +1,14 @@
 "use strict";
 const userSearchInput = document.getElementById("search");
-const userSelect = document.getElementById("select");
+const selectItem = document.getElementById("select");
 const buttons = document.querySelectorAll("button");
 const tableData = document.getElementById("tableData");
+const countryCount = document.getElementById("country-count");
+const countrySpellCheck = document.getElementById("country-spell-check");
 
 function renderCountryData(countries) {
+    countryCount.textContent = countries.length;
+    countrySpellCheck.textContent = countries.length >= 2 ? "Countries" : "Country";
     const tableHtml = `
           <table class="min-w-200 ">
           <thead>
@@ -27,7 +31,7 @@ function renderCountryData(countries) {
                     class="rounded-sm"
                 />
             </td>
-            <td class="w-62.5 text-wrap">${country.name.common}</td>
+            <td class="max-w-20 text-wrap pr-2">${country.name.common}</td>
             <td>${country.population.toLocaleString('en-US')}</td>
             <td>${country.area.toLocaleString('en-US')}</td>
             <td>${country.region}</td>
@@ -38,6 +42,25 @@ function renderCountryData(countries) {
     tableData.insertAdjacentHTML('afterbegin', tableHtml);
 }
 
+function sortWithSelectElements(countryList) {
+    selectItem.addEventListener('change', (event) => {
+        const selectedOption = event.target.value
+        if (selectedOption === "population") {
+            countryList.sort((a, b) => b.population - a.population)
+            renderCountryData(countryList);
+        } else if (selectedOption === "name") {
+            countryList.sort((a, b) => a.name.common.localeCompare(b.name.common))
+            renderCountryData(countryList);
+        } else if (selectedOption === "region") {
+            countryList.sort((a, b) => a.region > b.region ? 1 : -1)
+            renderCountryData(countryList);
+        } else if (selectedOption === "subregion") {
+            countryList.sort((a, b) => a.subregion > b.subregion ? 1 : -1)
+            renderCountryData(countryList);
+        }
+    })
+}
+
 async function getCountrydata() {
     const url = "https://restcountries.com/v3.1/all?fields=name,flags,population,area,region,subregion,independent"
     try {
@@ -46,7 +69,9 @@ async function getCountrydata() {
             throw new Error(`error received: ${response.status} error`)
         }
         const result = await response.json();
+        result.sort((a, b) => b.population - a.population);
         console.log(result);
+        sortWithSelectElements(result);
         renderCountryData(result);
     }
     catch (error) {
