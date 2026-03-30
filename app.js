@@ -47,15 +47,19 @@ function sortWithSelectElements(countryList) {
         const selectedOption = event.target.value
         if (selectedOption === "population") {
             countryList.sort((a, b) => b.population - a.population)
+            tableData.innerHTML = ""
             renderCountryData(countryList);
         } else if (selectedOption === "name") {
             countryList.sort((a, b) => a.name.common.localeCompare(b.name.common))
+            tableData.innerHTML = ""
             renderCountryData(countryList);
         } else if (selectedOption === "region") {
             countryList.sort((a, b) => a.region > b.region ? 1 : -1)
+            tableData.innerHTML = ""
             renderCountryData(countryList);
         } else if (selectedOption === "subregion") {
             countryList.sort((a, b) => a.subregion > b.subregion ? 1 : -1)
+            tableData.innerHTML = ""
             renderCountryData(countryList);
         }
     })
@@ -67,26 +71,32 @@ function filterWithButtons(countryList) {
             const selectedButton = event.target.value
             if (selectedButton === "antarctic") {
                 const antarctic = countryList.filter((item) => item.region === "Antarctic")
+                tableData.innerHTML = ""
                 renderCountryData(antarctic)
             }
             else if (selectedButton === "americas") {
                 const americas = countryList.filter((item) => item.region === "Americas")
+                tableData.innerHTML = ""
                 renderCountryData(americas)
             }
             else if (selectedButton === "asia") {
                 const asia = countryList.filter((item) => item.region === "Asia")
+                tableData.innerHTML = ""
                 renderCountryData(asia)
             }
             else if (selectedButton === "africa") {
                 const africa = countryList.filter((item) => item.region === "Africa")
+                tableData.innerHTML = ""
                 renderCountryData(africa)
             }
             else if (selectedButton === "europe") {
                 const europe = countryList.filter((item) => item.region === "Europe")
+                tableData.innerHTML = ""
                 renderCountryData(europe)
             }
             else if (selectedButton === "oceania") {
                 const oceania = countryList.filter((item) => item.region === "Oceania")
+                tableData.innerHTML = ""
                 renderCountryData(oceania)
             }
         })
