@@ -47,6 +47,17 @@ function renderCountryData(countries) {
     tableData.insertAdjacentHTML('afterbegin', tableHtml);
 }
 
+function searchFilter(countryList) {
+    userSearchInput.addEventListener('keyup', (event) => {
+        const searchItem = event.target.value.trim().toLowerCase();
+        const searchInput = countryList.filter((item) =>
+            item.name.common.toLowerCase().includes(searchItem)
+        )
+        tableData.innerHTML = ""
+        renderCountryData(searchInput)
+    })
+}
+
 function sortWithSelectElements(countryList) {
     selectItem.addEventListener('change', (event) => {
         const selectedOption = event.target.value
@@ -139,6 +150,7 @@ async function getCountrydata() {
         renderCountryData(result);
         filterRegionsWithButtons(result);
         filterStatusWithCheckbox(result);
+        searchFilter(result)
     }
     catch (error) {
         countryStatus.textContent = "Error fetching data"
