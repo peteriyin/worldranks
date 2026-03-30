@@ -5,6 +5,7 @@ const buttons = document.querySelectorAll("button");
 const tableData = document.getElementById("tableData");
 const countryCount = document.getElementById("country-count");
 const countrySpellCheck = document.getElementById("country-spell-check");
+const checkboxes = document.querySelectorAll("input[type=checkbox]")
 
 function renderCountryData(countries) {
     countryCount.textContent = countries.length;
@@ -65,7 +66,7 @@ function sortWithSelectElements(countryList) {
     })
 }
 
-function filterWithButtons(countryList) {
+function filterRegionsWithButtons(countryList) {
     buttons.forEach((button) => {
         button.addEventListener('click', (event) => {
             const selectedButton = event.target.value
@@ -103,8 +104,25 @@ function filterWithButtons(countryList) {
     })
 }
 
+function filterStatusWithCheckbox(countryList) {
+    checkboxes.forEach((checkbox) => {
+        checkbox.addEventListener("change", (event) => {
+            const checkedItem = event.target.value;
+            if (checkbox.checked && checkedItem === "united_nations") {
+                const unitedNations = countryList.filter((item) => item.unMember == true)
+                tableData.innerHTML = ""
+                renderCountryData(unitedNations)
+            } else if (checkbox.checked && checkedItem === "independent") {
+                const indePendent = countryList.filter((item) => item.independent == true)
+                tableData.innerHTML = ""
+                renderCountryData(indePendent)
+            }
+        })
+    })
+}
+
 async function getCountrydata() {
-    const url = "https://restcountries.com/v3.1/all?fields=name,flags,population,area,region,subregion,independent"
+    const url = "https://restcountries.com/v3.1/all?fields=name,flags,population,area,region,subregion,independent,unMember"
     try {
         const response = await fetch(url);
         if (!response.ok) {
@@ -115,7 +133,8 @@ async function getCountrydata() {
         console.log(result);
         sortWithSelectElements(result);
         renderCountryData(result);
-        filterWithButtons(result)
+        filterRegionsWithButtons(result);
+        filterStatusWithCheckbox(result);
     }
     catch (error) {
         console.log(error.message);
