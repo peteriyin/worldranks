@@ -61,6 +61,38 @@ function sortWithSelectElements(countryList) {
     })
 }
 
+function filterWithButtons(countryList) {
+    buttons.forEach((button) => {
+        button.addEventListener('click', (event) => {
+            const selectedButton = event.target.value
+            if (selectedButton === "antarctic") {
+                const antarctic = countryList.filter((item) => item.region === "Antarctic")
+                renderCountryData(antarctic)
+            }
+            else if (selectedButton === "americas") {
+                const americas = countryList.filter((item) => item.region === "Americas")
+                renderCountryData(americas)
+            }
+            else if (selectedButton === "asia") {
+                const asia = countryList.filter((item) => item.region === "Asia")
+                renderCountryData(asia)
+            }
+            else if (selectedButton === "africa") {
+                const africa = countryList.filter((item) => item.region === "Africa")
+                renderCountryData(africa)
+            }
+            else if (selectedButton === "europe") {
+                const europe = countryList.filter((item) => item.region === "Europe")
+                renderCountryData(europe)
+            }
+            else if (selectedButton === "oceania") {
+                const oceania = countryList.filter((item) => item.region === "Oceania")
+                renderCountryData(oceania)
+            }
+        })
+    })
+}
+
 async function getCountrydata() {
     const url = "https://restcountries.com/v3.1/all?fields=name,flags,population,area,region,subregion,independent"
     try {
@@ -73,6 +105,7 @@ async function getCountrydata() {
         console.log(result);
         sortWithSelectElements(result);
         renderCountryData(result);
+        filterWithButtons(result)
     }
     catch (error) {
         console.log(error.message);
