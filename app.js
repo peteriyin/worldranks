@@ -3,11 +3,15 @@ const userSearchInput = document.getElementById("search");
 const selectItem = document.getElementById("select");
 const buttons = document.querySelectorAll("button");
 const tableData = document.getElementById("tableData");
+const countryStatus = document.getElementById("countrystatus");
 const countryCount = document.getElementById("country-count");
 const countrySpellCheck = document.getElementById("country-spell-check");
-const checkboxes = document.querySelectorAll("input[type=checkbox]")
+const checkboxes = document.querySelectorAll("input[type=checkbox]");
 
 function renderCountryData(countries) {
+    if (countries.length == 0) {
+        countryStatus.textContent = "No Countries Found"
+    }
     countryCount.textContent = countries.length;
     countrySpellCheck.textContent = countries.length >= 2 ? "Countries" : "Country";
     const tableHtml = `
@@ -137,6 +141,7 @@ async function getCountrydata() {
         filterStatusWithCheckbox(result);
     }
     catch (error) {
+        countryStatus.textContent = "Error fetching data"
         console.log(error.message);
     }
 }
