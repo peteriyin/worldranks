@@ -357,6 +357,9 @@
   .text-\[\#D2D5DA\] {
     color: #D2D5DA;
   }
+  .opacity-0 {
+    opacity: 0%;
+  }
   .shadow-2xl {
     --tw-shadow: 0 25px 50px -12px var(--tw-shadow-color, rgb(0 0 0 / 0.25));
     box-shadow: var(--tw-inset-shadow), var(--tw-inset-ring-shadow), var(--tw-ring-offset-shadow), var(--tw-ring-shadow), var(--tw-shadow);
@@ -393,7 +396,6 @@
     border-radius: 3px;
   }
   input[type="checkbox"]:checked {
-    background-color: #4e80ee;
     border-color: #4e80ee;
   }
   th {
@@ -407,6 +409,12 @@
 @layer utilities {
   .button-background {
     background-color: #282b30;
+  }
+  .checkbox {
+    background-color: #4e80ee;
+    border-color: #4e80ee;
+    border-radius: 3px;
+    opacity: 1;
   }
   .label-size, th {
     font-size: 0.75rem;

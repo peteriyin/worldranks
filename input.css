@@ -29,7 +29,6 @@
   }
 
   input[type="checkbox"]:checked {
-    background-color: #4e80ee;
     border-color: #4e80ee;
   }
 
@@ -46,6 +45,13 @@
 @layer utilities {
   .button-background {
     background-color: #282b30;
+  }
+
+  .checkbox {
+    background-color: #4e80ee;
+    border-color: #4e80ee;
+    border-radius: 3px;
+    opacity: 1;
   }
 
   .label-size,

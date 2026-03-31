@@ -7,6 +7,9 @@ const countryStatus = document.getElementById("countrystatus");
 const countryCount = document.getElementById("country-count");
 const countrySpellCheck = document.getElementById("country-spell-check");
 const checkboxes = document.querySelectorAll("input[type=checkbox]");
+const checkboxesChecked = document.querySelectorAll("input[type=checkbox]:checked");
+const checkmark1 = document.getElementById("checkmark_1");
+const checkmark2 = document.getElementById("checkmark_2");
 
 function renderCountryData(countries) {
     if (countries.length == 0) {
@@ -124,13 +127,20 @@ function filterStatusWithCheckbox(countryList) {
         checkbox.addEventListener("change", (event) => {
             const checkedItem = event.target.value;
             if (checkbox.checked && checkedItem === "united_nations") {
+                checkmark1.classList.add("checkbox")
                 const unitedNations = countryList.filter((item) => item.unMember == true)
                 tableData.innerHTML = ""
                 renderCountryData(unitedNations)
             } else if (checkbox.checked && checkedItem === "independent") {
+                checkmark2.classList.add("checkbox")
                 const indePendent = countryList.filter((item) => item.independent == true)
                 tableData.innerHTML = ""
                 renderCountryData(indePendent)
+            } else if (!checkbox.checked && checkedItem === "united_nations") {
+                checkmark1.classList.remove("checkbox")
+            }
+            else if (!checkbox.checked && checkedItem === "independent") {
+                checkmark2.classList.remove("checkbox")
             }
         })
     })
@@ -150,7 +160,7 @@ async function getCountrydata() {
         renderCountryData(result);
         filterRegionsWithButtons(result);
         filterStatusWithCheckbox(result);
-        searchFilter(result)
+        searchFilter(result);
     }
     catch (error) {
         countryStatus.textContent = "Error fetching data"
