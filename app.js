@@ -18,7 +18,7 @@ function renderCountryData(countries) {
     countryCount.textContent = countries.length;
     countrySpellCheck.textContent = countries.length >= 2 ? "Countries" : "Country";
     const tableHtml = `
-          <table class="min-w-200 ">
+          <table class="min-w-200">
           <thead>
             <tr>
              <th>Flag</th>
