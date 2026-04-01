@@ -33,7 +33,11 @@
     <div
       class="w-[90%] absolute top-37.5 left-[5%] bg-[#1B1D1F] border-[1.5px] border-[#282B30] border-solid rounded-lg shadow-2xl pl-2.5 pr-2.5 pb-2.5 space-y-6 pt-3"
     >
-      <div class="text-[#D2D5DA] font-medium text-[1rem]" id="countrystatus">
+      <div
+        role="status"
+        class="text-[#D2D5DA] font-medium text-[1rem]"
+        id="countrystatus"
+      >
         Found <span id="country-count"></span>
         <span id="country-spell-check"></span>
       </div>
@@ -204,7 +208,19 @@
         </div>
       </div>
 
-      <div class="overflow-auto h-[95vh] tables" id="tableData"></div>
+      <div class="overflow-auto h-[95vh] tables">
+        <table class="min-w-200" id="tableData">
+          <thead>
+            <tr>
+              <th>Flag</th>
+              <th>Name</th>
+              <th>Population</th>
+              <th>Area (km<sup>2</sup>)</th>
+              <th>Region</th>
+            </tr>
+          </thead>
+        </table>
+      </div>
     </div>
   </body>
 </html>

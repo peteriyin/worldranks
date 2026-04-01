@@ -18,18 +18,8 @@ function renderCountryData(countries) {
     countryCount.textContent = countries.length;
     countrySpellCheck.textContent = countries.length >= 2 ? "Countries" : "Country";
     const tableHtml = `
-          <table class="min-w-200">
-          <thead>
-            <tr>
-             <th>Flag</th>
-             <th>Name</th>
-             <th>Population</th>
-             <th>Area (km<sup>2</sup>)</th>
-             <th>Region</th>
-            </tr>
-          </thead>
-          <tbody>
-          ${countries.map(country => `
+    <tbody>
+        ${countries.map(country => `
         <tr>
             <td>
                 <img
@@ -45,9 +35,8 @@ function renderCountryData(countries) {
             <td>${country.region}</td>
         </tr>
         `).join("")}
-          </tbody>
-        </table>`
-    tableData.insertAdjacentHTML('afterbegin', tableHtml);
+          </tbody>`
+    tableData.insertAdjacentHTML("beforeend", tableHtml);
 }
 
 function searchFilter(countryList) {
@@ -155,9 +144,8 @@ async function getCountrydata() {
         }
         const result = await response.json();
         result.sort((a, b) => b.population - a.population);
-        console.log(result);
-        sortWithSelectElements(result);
         renderCountryData(result);
+        sortWithSelectElements(result);
         filterRegionsWithButtons(result);
         filterStatusWithCheckbox(result);
         searchFilter(result);
