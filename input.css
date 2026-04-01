@@ -71,4 +71,8 @@
     font-size: 0.875rem;
     font-weight: 600;
   }
+
+  .tables {
+    scrollbar-color: #d2d5da #1b1d1f;
+  }
 }
