@@ -2,7 +2,7 @@
 const userSearchInput = document.getElementById("search");
 const selectItem = document.getElementById("select");
 const buttons = document.querySelectorAll("button");
-const tableData = document.getElementById("tableData");
+const tableBody = document.getElementById("tableBody");
 const countryStatus = document.getElementById("countrystatus");
 const countryCount = document.getElementById("country-count");
 const countrySpellCheck = document.getElementById("country-spell-check");
@@ -11,6 +11,24 @@ const checkboxesChecked = document.querySelectorAll("input[type=checkbox]:checke
 const checkmark1 = document.getElementById("checkmark_1");
 const checkmark2 = document.getElementById("checkmark_2");
 
+// function renderAnimationPulse() {
+//     const tableDataAnimation = `
+//         <tbody>
+//             <tr class="animate-pulse">
+//                 <td class="flex items-center justify-center w-10.75 h-11 bg-neutral-quaternary rounded-base">
+//                     <svg class="w-11 h-11 text-fg-disabled" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24"><path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m3 16 5-7 6 6.5m6.5 2.5L16 13l-4.286 6M14 10h.01M4 19h16a1 1 0 0 0 1-1V6a1 1 0 0 0-1-1H4a1 1 0 0 0-1 1v12a1 1 0 0 0 1 1Z"/>
+//                     </svg>
+//                 </td>
+//                 <td><div class="h-4 bg-gray-500 rounded-full w-20 inline-block">&nbsp;</div></td>
+//                 <td><div class="h-4 bg-neutral-quaternary rounded-full w-24">hfh</div></td>
+//                 <td><div class="h-4 bg-neutral-quaternary rounded-full w-19">hgh</div></td>
+//                 <td><div class="h-4 bg-neutral-quaternary rounded-full w-16">hgh</div></td> 
+//             </tr>
+//         </tbody>`
+//     tableData.insertAdjacentHTML("beforeend", tableDataAnimation)
+// }
+// renderAnimationPulse()
+
 function renderCountryData(countries) {
     if (countries.length == 0) {
         countryStatus.textContent = "No Countries Found"
@@ -18,7 +36,6 @@ function renderCountryData(countries) {
     countryCount.textContent = countries.length;
     countrySpellCheck.textContent = countries.length >= 2 ? "Countries" : "Country";
     const tableHtml = `
-    <tbody>
         ${countries.map(country => `
         <tr>
             <td>
@@ -35,8 +52,8 @@ function renderCountryData(countries) {
             <td>${country.region}</td>
         </tr>
         `).join("")}
-          </tbody>`
-    tableData.insertAdjacentHTML("beforeend", tableHtml);
+  `
+    tableBody.insertAdjacentHTML("afterbegin", tableHtml);
 }
 
 function searchFilter(countryList) {
@@ -45,7 +62,7 @@ function searchFilter(countryList) {
         const searchInput = countryList.filter((item) =>
             item.name.common.toLowerCase().includes(searchItem)
         )
-        tableData.innerHTML = ""
+        tableBody.innerHTML = ""
         renderCountryData(searchInput)
     })
 }
@@ -55,19 +72,19 @@ function sortWithSelectElements(countryList) {
         const selectedOption = event.target.value
         if (selectedOption === "population") {
             countryList.sort((a, b) => b.population - a.population)
-            tableData.innerHTML = ""
+            tableBody.innerHTML = ""
             renderCountryData(countryList);
         } else if (selectedOption === "name") {
             countryList.sort((a, b) => a.name.common.localeCompare(b.name.common))
-            tableData.innerHTML = ""
+            tableBody.innerHTML = ""
             renderCountryData(countryList);
         } else if (selectedOption === "region") {
             countryList.sort((a, b) => a.region > b.region ? 1 : -1)
-            tableData.innerHTML = ""
+            tableBody.innerHTML = ""
             renderCountryData(countryList);
         } else if (selectedOption === "subregion") {
             countryList.sort((a, b) => a.subregion > b.subregion ? 1 : -1)
-            tableData.innerHTML = ""
+            tableBody.innerHTML = ""
             renderCountryData(countryList);
         }
     })
@@ -79,32 +96,32 @@ function filterRegionsWithButtons(countryList) {
             const selectedButton = event.target.value
             if (selectedButton === "antarctic") {
                 const antarctic = countryList.filter((item) => item.region === "Antarctic")
-                tableData.innerHTML = ""
+                tableBody.innerHTML = ""
                 renderCountryData(antarctic)
             }
             else if (selectedButton === "americas") {
                 const americas = countryList.filter((item) => item.region === "Americas")
-                tableData.innerHTML = ""
+                tableBody.innerHTML = ""
                 renderCountryData(americas)
             }
             else if (selectedButton === "asia") {
                 const asia = countryList.filter((item) => item.region === "Asia")
-                tableData.innerHTML = ""
+                tableBody.innerHTML = ""
                 renderCountryData(asia)
             }
             else if (selectedButton === "africa") {
                 const africa = countryList.filter((item) => item.region === "Africa")
-                tableData.innerHTML = ""
+                tableBody.innerHTML = ""
                 renderCountryData(africa)
             }
             else if (selectedButton === "europe") {
                 const europe = countryList.filter((item) => item.region === "Europe")
-                tableData.innerHTML = ""
+                tableBody.innerHTML = ""
                 renderCountryData(europe)
             }
             else if (selectedButton === "oceania") {
                 const oceania = countryList.filter((item) => item.region === "Oceania")
-                tableData.innerHTML = ""
+                tableBody.innerHTML = ""
                 renderCountryData(oceania)
             }
         })
@@ -118,12 +135,12 @@ function filterStatusWithCheckbox(countryList) {
             if (checkbox.checked && checkedItem === "united_nations") {
                 checkmark1.classList.add("checkbox")
                 const unitedNations = countryList.filter((item) => item.unMember == true)
-                tableData.innerHTML = ""
+                tableBody.innerHTML = ""
                 renderCountryData(unitedNations)
             } else if (checkbox.checked && checkedItem === "independent") {
                 checkmark2.classList.add("checkbox")
                 const indePendent = countryList.filter((item) => item.independent == true)
-                tableData.innerHTML = ""
+                tableBody.innerHTML = ""
                 renderCountryData(indePendent)
             } else if (!checkbox.checked && checkedItem === "united_nations") {
                 checkmark1.classList.remove("checkbox")
