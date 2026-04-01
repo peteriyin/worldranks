@@ -144,9 +144,13 @@ function filterStatusWithCheckbox(countryList) {
                 renderCountryData(indePendent)
             } else if (!checkbox.checked && checkedItem === "united_nations") {
                 checkmark1.classList.remove("checkbox")
+                tableBody.innerHTML = ""
+                renderCountryData(countryList)
             }
             else if (!checkbox.checked && checkedItem === "independent") {
                 checkmark2.classList.remove("checkbox")
+                tableBody.innerHTML = ""
+                renderCountryData(countryList)
             }
         })
     })
