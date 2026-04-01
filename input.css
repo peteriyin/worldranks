@@ -48,7 +48,7 @@
 }
 
 @layer utilities {
-  .button-background {
+  .active {
     background-color: #282b30;
   }
 

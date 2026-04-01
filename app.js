@@ -90,17 +90,35 @@ function sortWithSelectElements(countryList) {
     })
 }
 
+let activeRegions = [];
+
 function filterRegionsWithButtons(countryList) {
     buttons.forEach((button) => {
         button.addEventListener('click', (event) => {
-            const selectedButton = event.target.value
-            const filteredCountries = countryList.filter((country) =>
-                country.region.toLowerCase() == selectedButton.toLowerCase()
-            );
-            tableBody.innerHTML = ""
-            renderCountryData(filteredCountries)
-        })
-    })
+            const currentBtn = event.currentTarget;
+            const regionValue = currentBtn.value.toLowerCase();
+
+            if (activeRegions.includes(regionValue)) {
+                activeRegions = activeRegions.filter(r => r !== regionValue);
+                currentBtn.classList.remove('active');
+            } else {
+                activeRegions.push(regionValue);
+                currentBtn.classList.add('active');
+            }
+
+            let filteredData;
+
+            if (activeRegions.length === 0) {
+                filteredData = countryList;
+            } else {
+                filteredData = countryList.filter(country =>
+                    activeRegions.includes(country.region.toLowerCase())
+                );
+            }
+            tableBody.innerHTML = "";
+            renderCountryData(filteredData);
+        });
+    });
 }
 
 function filterStatusWithCheckbox(countryList) {
