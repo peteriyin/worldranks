@@ -94,36 +94,11 @@ function filterRegionsWithButtons(countryList) {
     buttons.forEach((button) => {
         button.addEventListener('click', (event) => {
             const selectedButton = event.target.value
-            if (selectedButton === "antarctic") {
-                const antarctic = countryList.filter((item) => item.region === "Antarctic")
-                tableBody.innerHTML = ""
-                renderCountryData(antarctic)
-            }
-            else if (selectedButton === "americas") {
-                const americas = countryList.filter((item) => item.region === "Americas")
-                tableBody.innerHTML = ""
-                renderCountryData(americas)
-            }
-            else if (selectedButton === "asia") {
-                const asia = countryList.filter((item) => item.region === "Asia")
-                tableBody.innerHTML = ""
-                renderCountryData(asia)
-            }
-            else if (selectedButton === "africa") {
-                const africa = countryList.filter((item) => item.region === "Africa")
-                tableBody.innerHTML = ""
-                renderCountryData(africa)
-            }
-            else if (selectedButton === "europe") {
-                const europe = countryList.filter((item) => item.region === "Europe")
-                tableBody.innerHTML = ""
-                renderCountryData(europe)
-            }
-            else if (selectedButton === "oceania") {
-                const oceania = countryList.filter((item) => item.region === "Oceania")
-                tableBody.innerHTML = ""
-                renderCountryData(oceania)
-            }
+            const filteredCountries = countryList.filter((country) =>
+                country.region.toLowerCase() == selectedButton.toLowerCase()
+            );
+            tableBody.innerHTML = ""
+            renderCountryData(filteredCountries)
         })
     })
 }
