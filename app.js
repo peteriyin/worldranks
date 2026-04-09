@@ -7,9 +7,6 @@ const countriesFound = document.getElementById("countrystatus");
 const countryCount = document.getElementById("country-count");
 const countrySpellCheck = document.getElementById("country-spell-check");
 const checkboxes = document.querySelectorAll("input[type=checkbox]");
-const checkboxesChecked = document.querySelectorAll("input[type=checkbox]:checked");
-const checkmark1 = document.getElementById("checkmark1");
-const checkmark2 = document.getElementById("checkmark_2");
 const svgs = document.querySelectorAll('.checkmarks');
 
 // function renderAnimationPulse() {
@@ -70,24 +67,18 @@ function searchFilter(countryList) {
 
 function sortWithSelectElements(countryList) {
     selectItem.addEventListener('change', (event) => {
+        const selectItemId = event.target.selectedOptions[0].id;
         const selectedOption = event.target.value
-        if (selectedOption === "population") {
-            countryList.sort((a, b) => b.population - a.population)
-            tableBody.innerHTML = ""
-            renderCountryData(countryList);
-        } else if (selectedOption === "name") {
-            countryList.sort((a, b) => a.name.common.localeCompare(b.name.common))
-            tableBody.innerHTML = ""
-            renderCountryData(countryList);
-        } else if (selectedOption === "region") {
-            countryList.sort((a, b) => a.region > b.region ? 1 : -1)
-            tableBody.innerHTML = ""
-            renderCountryData(countryList);
-        } else if (selectedOption === "subregion") {
-            countryList.sort((a, b) => a.subregion > b.subregion ? 1 : -1)
-            tableBody.innerHTML = ""
-            renderCountryData(countryList);
+
+        if (selectItemId == "numbers") {
+            countryList.sort((a, b) => b[selectedOption] - a[selectedOption])
+        } else if (selectItemId == "names") {
+            countryList.sort((a, b) => a[selectedOption].common.localeCompare(b[selectedOption].common))
+        } else {
+            countryList.sort((a, b) => a[selectedOption] > b[selectedOption] ? 1 : -1)
         }
+        tableBody.innerHTML = ""
+        renderCountryData(countryList);
     })
 }
 
@@ -164,7 +155,6 @@ async function getCountrydata() {
         }
         const result = await response.json();
         result.sort((a, b) => b.population - a.population);
-        console.log(result);
 
         renderCountryData(result);
         sortWithSelectElements(result);
