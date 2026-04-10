@@ -9,23 +9,20 @@ const countrySpellCheck = document.getElementById("country-spell-check");
 const checkboxes = document.querySelectorAll("input[type=checkbox]");
 const svgs = document.querySelectorAll('.checkmarks');
 
-// function renderAnimationPulse() {
-//     const tableDataAnimation = `
-//         <tbody>
-//             <tr class="animate-pulse">
-//                 <td class="flex items-center justify-center w-10.75 h-11 bg-neutral-quaternary rounded-base">
-//                     <svg class="w-11 h-11 text-fg-disabled" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24"><path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m3 16 5-7 6 6.5m6.5 2.5L16 13l-4.286 6M14 10h.01M4 19h16a1 1 0 0 0 1-1V6a1 1 0 0 0-1-1H4a1 1 0 0 0-1 1v12a1 1 0 0 0 1 1Z"/>
-//                     </svg>
-//                 </td>
-//                 <td><div class="h-4 bg-gray-500 rounded-full w-20 inline-block">&nbsp;</div></td>
-//                 <td><div class="h-4 bg-neutral-quaternary rounded-full w-24">hfh</div></td>
-//                 <td><div class="h-4 bg-neutral-quaternary rounded-full w-19">hgh</div></td>
-//                 <td><div class="h-4 bg-neutral-quaternary rounded-full w-16">hgh</div></td> 
-//             </tr>
-//         </tbody>`
-//     tableData.insertAdjacentHTML("beforeend", tableDataAnimation)
-// }
-// renderAnimationPulse()
+function renderAnimationPulse() {
+    tableBody.innerHTML = Array(10).fill(`
+        <tr class="animate-pulse">
+        <td class="flex items-center justify-center w-15 h-11 bg-gray-500 rounded pt-1 mt-4">
+            <svg class="w-6 h-11 text-fg-disabled" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24"><path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m3 16 5-7 6 6.5m6.5 2.5L16 13l-4.286 6M14 10h.01M4 19h16a1 1 0 0 0 1-1V6a1 1 0 0 0-1-1H4a1 1 0 0 0-1 1v12a1 1 0 0 0 1 1Z"/>
+            </svg>
+        </td>
+        <td><div class="h-3 bg-gray-500 rounded-full w-20"></div></td>
+        <td><div class="h-3 bg-gray-500 rounded-full w-26"></div></td>
+        <td><div class="h-3 bg-gray-500 rounded-full w-19"></div></td>
+        <td><div class="h-3 bg-gray-500 rounded-full w-16"></div></td>
+        </tr>`).join("");
+}
+renderAnimationPulse()
 
 function renderCountryData(countries) {
     if (countries.length == 0) {
@@ -83,7 +80,6 @@ function sortWithSelectElements(countryList) {
 }
 
 let activeRegions = [];
-
 function filterRegionsWithButtons(countryList) {
     buttons.forEach((button) => {
         button.addEventListener('click', (event) => {
@@ -154,6 +150,7 @@ async function getCountrydata() {
             throw new Error(`error received: ${response.status} error`)
         }
         const result = await response.json();
+        tableBody.innerHTML = "";
         result.sort((a, b) => b.population - a.population);
 
         renderCountryData(result);
