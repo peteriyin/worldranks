@@ -51,16 +51,31 @@ function renderCountryData(countries) {
     tableBody.insertAdjacentHTML("afterbegin", tableHtml);
 }
 
+const debounce = (callback, delay) => {
+    let timeoutId = null;
+
+    return (...args) => {
+        clearTimeout(timeoutId);
+
+        timeoutId = setTimeout(() => {
+            callback.apply(null, args);
+        }, delay);
+    };
+}
+
 function searchFilter(countryList) {
-    userSearchInput.addEventListener('keyup', (event) => {
+
+    function handleSearch(event) {
         const searchItem = event.target.value.trim().toLowerCase();
         const searchInput = countryList.filter((item) =>
             item.name.common.toLowerCase().includes(searchItem)
         )
         tableBody.innerHTML = ""
         renderCountryData(searchInput)
-    })
-}
+    }
+    const debounceSearch = debounce(handleSearch, 300)
+    userSearchInput.addEventListener('keyup', debounceSearch)
+};
 
 function sortWithSelectElements(countryList) {
     selectItem.addEventListener('change', (event) => {
