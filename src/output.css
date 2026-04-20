@@ -189,11 +189,14 @@
   .top-12\.5 {
     top: calc(var(--spacing) * 12.5);
   }
-  .top-37 {
-    top: calc(var(--spacing) * 37);
+  .top-60 {
+    top: calc(var(--spacing) * 60);
   }
-  .top-37\.5 {
-    top: calc(var(--spacing) * 37.5);
+  .top-60\.5 {
+    top: calc(var(--spacing) * 60.5);
+  }
+  .top-\[50\%\] {
+    top: 50%;
   }
   .top-\[60\%\] {
     top: 60%;
@@ -210,9 +213,6 @@
   .left-\[50\%\] {
     left: 50%;
   }
-  .mt-1 {
-    margin-top: calc(var(--spacing) * 1);
-  }
   .mt-4 {
     margin-top: calc(var(--spacing) * 4);
   }
@@ -225,23 +225,11 @@
   .flex {
     display: flex;
   }
-  .inline-block {
-    display: inline-block;
-  }
   .table {
     display: table;
   }
-  .h-2 {
-    height: calc(var(--spacing) * 2);
-  }
   .h-3 {
     height: calc(var(--spacing) * 3);
-  }
-  .h-4 {
-    height: calc(var(--spacing) * 4);
-  }
-  .h-8 {
-    height: calc(var(--spacing) * 8);
   }
   .h-11 {
     height: calc(var(--spacing) * 11);
@@ -249,35 +237,35 @@
   .h-80 {
     height: calc(var(--spacing) * 80);
   }
+  .h-\[46vh\] {
+    height: 46vh;
+  }
+  .h-\[60vh\] {
+    height: 60vh;
+  }
+  .h-\[65vh\] {
+    height: 65vh;
+  }
+  .h-\[75vh\] {
+    height: 75vh;
+  }
+  .h-\[85vh\] {
+    height: 85vh;
+  }
+  .h-\[90vh\] {
+    height: 90vh;
+  }
   .h-\[95vh\] {
     height: 95vh;
   }
-  .w-5 {
-    width: calc(var(--spacing) * 5);
+  .h-\[96vh\] {
+    height: 96vh;
+  }
+  .h-screen {
+    height: 100vh;
   }
   .w-6 {
     width: calc(var(--spacing) * 6);
-  }
-  .w-8 {
-    width: calc(var(--spacing) * 8);
-  }
-  .w-9 {
-    width: calc(var(--spacing) * 9);
-  }
-  .w-10 {
-    width: calc(var(--spacing) * 10);
-  }
-  .w-10\.75 {
-    width: calc(var(--spacing) * 10.75);
-  }
-  .w-11 {
-    width: calc(var(--spacing) * 11);
-  }
-  .w-12 {
-    width: calc(var(--spacing) * 12);
-  }
-  .w-14 {
-    width: calc(var(--spacing) * 14);
   }
   .w-15 {
     width: calc(var(--spacing) * 15);
@@ -290,9 +278,6 @@
   }
   .w-20 {
     width: calc(var(--spacing) * 20);
-  }
-  .w-24 {
-    width: calc(var(--spacing) * 24);
   }
   .w-26 {
     width: calc(var(--spacing) * 26);
@@ -513,6 +498,91 @@
       outline-style: none;
     }
   }
+  .tablet\:top-30\.5 {
+    @media (width >= 64rem) {
+      top: calc(var(--spacing) * 30.5);
+    }
+  }
+  .tablet\:top-\[40\%\] {
+    @media (width >= 64rem) {
+      top: 40%;
+    }
+  }
+  .tablet\:top-\[45\%\] {
+    @media (width >= 64rem) {
+      top: 45%;
+    }
+  }
+  .tablet\:top-\[50\%\] {
+    @media (width >= 64rem) {
+      top: 50%;
+    }
+  }
+  .tablet\:left-\[2\.5\%\] {
+    @media (width >= 64rem) {
+      left: 2.5%;
+    }
+  }
+  .tablet\:col-start-2 {
+    @media (width >= 64rem) {
+      grid-column-start: 2;
+    }
+  }
+  .tablet\:col-start-3 {
+    @media (width >= 64rem) {
+      grid-column-start: 3;
+    }
+  }
+  .tablet\:col-end-4 {
+    @media (width >= 64rem) {
+      grid-column-end: 4;
+    }
+  }
+  .tablet\:row-start-2 {
+    @media (width >= 64rem) {
+      grid-row-start: 2;
+    }
+  }
+  .tablet\:row-end-4 {
+    @media (width >= 64rem) {
+      grid-row-end: 4;
+    }
+  }
+  .tablet\:row-end-5 {
+    @media (width >= 64rem) {
+      grid-row-end: 5;
+    }
+  }
+  .tablet\:mt-35 {
+    @media (width >= 64rem) {
+      margin-top: calc(var(--spacing) * 35);
+    }
+  }
+  .tablet\:grid {
+    @media (width >= 64rem) {
+      display: grid;
+    }
+  }
+  .tablet\:w-\[95\%\] {
+    @media (width >= 64rem) {
+      width: 95%;
+    }
+  }
+  .tablet\:grid-cols-\[15rem_repeat\(2\,1fr\)\] {
+    @media (width >= 64rem) {
+      grid-template-columns: 15rem repeat(2,1fr);
+    }
+  }
+  .tablet\:grid-rows-\[4rem_7rem_9rem_1fr\] {
+    @media (width >= 64rem) {
+      grid-template-rows: 4rem 7rem 9rem 1fr;
+    }
+  }
+  .tablet\:gap-x-6 {
+    @media (width >= 64rem) {
+      column-gap: calc(var(--spacing) * 6);
+    }
+  }
 }
 @layer base {
   body {
@@ -532,6 +602,7 @@
     border: 2px solid #d2d5da;
     vertical-align: -7px;
     border-radius: 3px;
+    cursor: pointer;
   }
   input[type="checkbox"]:checked {
     border-color: #4e80ee;

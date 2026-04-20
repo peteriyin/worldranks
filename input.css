@@ -3,7 +3,7 @@
 @theme {
   --breakpoint-*: initial;
   --breakpoint-tablet: 64rem;
-  --breakpoint-desktop: 84.375rem;
+  --breakpoint-desktop: 80rem;
 }
 
 @layer base {
@@ -26,6 +26,7 @@
     border: 2px solid #d2d5da;
     vertical-align: -7px;
     border-radius: 3px;
+    cursor: pointer;
   }
 
   input[type="checkbox"]:checked {

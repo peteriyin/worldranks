@@ -25,13 +25,13 @@
       />
     </div>
     <div
-      class="absolute left-[50%] top-12.5 transform -translate-x-1/2 -translate-y-1/2"
+      class="absolute left-[50%] top-12.5 tablet:top-30.5 transform -translate-x-1/2 -translate-y-1/2"
     >
       <img src="resources/Logo.svg" alt="world rank logo" />
     </div>
 
     <div
-      class="w-[90%] absolute top-37.5 left-[5%] bg-[#1B1D1F] border-[1.5px] border-[#282B30] border-solid rounded-lg shadow-2xl pl-2.5 pr-2.5 pb-2.5 space-y-6 pt-3"
+      class="w-[90%] tablet:w-[95%] tablet:grid tablet:grid-cols-[15rem_repeat(2,1fr)] tablet:grid-rows-[4rem_7rem_9rem_1fr] tablet:gap-x-6 tablet:left-[2.5%] absolute top-60.5 left-[5%] bg-[#1B1D1F] border-[1.5px] border-[#282B30] border-solid rounded-lg shadow-2xl pl-2.5 pr-2.5 pb-2.5 space-y-6 pt-3"
     >
       <div
         role="status"
@@ -41,14 +41,15 @@
         Found <span id="country-count"></span>
         <span id="country-spell-check"></span>
       </div>
-      <div class="relative">
+
+      <div class="relative tablet:col-start-3">
         <svg
           width="24"
           height="24"
           viewBox="0 0 24 24"
           fill="none"
           xmlns="http://www.w3.org/2000/svg"
-          class="absolute left-[2%] top-1/2 transform -translate-y-1/2"
+          class="absolute left-[2%] top-[50%] tablet:top-[45%] transform -translate-y-1/2"
         >
           <circle cx="11" cy="11" r="7" stroke="#D2D5DA" stroke-width="2" />
           <path
@@ -69,16 +70,6 @@
 
       <div class="relative">
         <div class="label-size mb-3">Sort by</div>
-        <svg
-          width="16"
-          height="16"
-          viewBox="0 0 16 16"
-          fill="none"
-          xmlns="http://www.w3.org/2000/svg"
-          class="absolute top-[60%] right-[5%]"
-        >
-          <path d="M12 6L8 10L4 6" stroke="#6C727F" stroke-width="3" />
-        </svg>
         <select
           name="select"
           id="select"
@@ -89,6 +80,16 @@
           <option value="region" id="string">Region</option>
           <option value="subregion" id="string">Subregion</option>
         </select>
+        <svg
+          width="16"
+          height="16"
+          viewBox="0 0 16 16"
+          fill="none"
+          xmlns="http://www.w3.org/2000/svg"
+          class="absolute top-[60%] tablet:top-[50%] right-[5%]"
+        >
+          <path d="M12 6L8 10L4 6" stroke="#6C727F" stroke-width="3" />
+        </svg>
       </div>
 
       <div>
@@ -174,7 +175,9 @@
         </div>
       </div>
 
-      <div class="overflow-auto h-[95vh] tables">
+      <div
+        class="overflow-auto h-[95vh] tables tablet:col-start-2 tablet:col-end-4 tablet:row-start-2 tablet:row-end-5"
+      >
         <table class="min-w-200">
           <thead>
             <tr>
