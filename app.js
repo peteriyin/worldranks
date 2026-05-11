@@ -32,7 +32,7 @@ function renderCountryData(countries) {
     countrySpellCheck.textContent = countries.length >= 2 ? "Countries" : "Country";
     const tableHtml = `
         ${countries.map(country => `
-        <tr>
+            <tr data-id="${country.name.common}" class="hover:bg-[#282B30] cursor-pointer active:bg-[]">
             <td>
                 <img
                     src="${country.flags.svg}"
@@ -45,11 +45,21 @@ function renderCountryData(countries) {
             <td>${country.population.toLocaleString('en-US')}</td>
             <td>${country.area.toLocaleString('en-US')}</td>
             <td>${country.region}</td>
-        </tr>
+            </tr>
         `).join("")}
   `
     tableBody.insertAdjacentHTML("afterbegin", tableHtml);
 }
+
+function activeRows() {
+    tableBody.addEventListener('click', (event) => {
+        const clickedRow = event.target.parentElement.getAttribute("data-id")``
+        console.log(clickedRow);
+    })
+    console.log(tableBody);
+}
+activeRows()
+
 
 const debounce = (callback, delay) => {
     let timeoutId = null;
@@ -80,7 +90,7 @@ function searchFilter(countryList) {
 function sortWithSelectElements(countryList) {
     selectItem.addEventListener('change', (event) => {
         const selectItemId = event.target.selectedOptions[0].id;
-        const selectedOption = event.target.value
+        const selectedOption = event.target.value;
 
         if (selectItemId == "numbers") {
             countryList.sort((a, b) => b[selectedOption] - a[selectedOption])
