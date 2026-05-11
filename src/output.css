@@ -7,14 +7,10 @@
       "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
     --font-mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono",
       "Courier New", monospace;
-    --color-gray-400: oklch(70.7% 0.022 261.325);
     --color-gray-500: oklch(55.1% 0.027 264.364);
     --color-gray-600: oklch(44.6% 0.03 256.802);
     --color-gray-700: oklch(37.3% 0.034 259.733);
     --spacing: 0.25rem;
-    --container-2xl: 42rem;
-    --text-xs: 0.75rem;
-    --text-xs--line-height: calc(1 / 0.75);
     --text-sm: 0.875rem;
     --text-sm--line-height: calc(1.25 / 0.875);
     --text-2xl: 1.5rem;
@@ -252,6 +248,9 @@
   }
   .mb-12 {
     margin-bottom: calc(var(--spacing) * 12);
+  }
+  .ml-\[50\%\] {
+    margin-left: 50%;
   }
   .flex {
     display: flex;
@@ -657,6 +656,11 @@
       display: grid;
     }
   }
+  .tablet\:w-\[70\%\] {
+    @media (width >= 64rem) {
+      width: 70%;
+    }
+  }
   .tablet\:w-\[95\%\] {
     @media (width >= 64rem) {
       width: 95%;
@@ -675,6 +679,16 @@
   .tablet\:gap-x-6 {
     @media (width >= 64rem) {
       column-gap: calc(var(--spacing) * 6);
+    }
+  }
+  .desktop\:w-\[50\%\] {
+    @media (width >= 80rem) {
+      width: 50%;
+    }
+  }
+  .desktop\:w-\[60\%\] {
+    @media (width >= 80rem) {
+      width: 60%;
     }
   }
 }
