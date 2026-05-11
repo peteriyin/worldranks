@@ -53,7 +53,7 @@ function renderCountryData(countries) {
 
 function activeRows() {
     tableBody.addEventListener('click', (event) => {
-        const clickedRow = event.target.parentElement.getAttribute("data-id")``
+        const clickedRow = event.target.parentElement.getAttribute("data-id")
         console.log(clickedRow);
     })
     console.log(tableBody);
