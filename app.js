@@ -8,6 +8,8 @@ const countryCount = document.getElementById("country-count");
 const countrySpellCheck = document.getElementById("country-spell-check");
 const checkboxes = document.querySelectorAll("input[type=checkbox]");
 const svgs = document.querySelectorAll('.checkmarks');
+const countryDetail = document.getElementById("countrydetail");
+const fullview = document.getElementById("fullview");
 
 function renderAnimationPulse() {
     tableBody.innerHTML = Array(10).fill(`
@@ -51,14 +53,26 @@ function renderCountryData(countries) {
     tableBody.insertAdjacentHTML("afterbegin", tableHtml);
 }
 
-function activeRows() {
+function activeRows(countryList) {
     tableBody.addEventListener('click', (event) => {
         const clickedRow = event.target.parentElement.getAttribute("data-id")
-        console.log(clickedRow);
+        window.location = `#/country/${clickedRow}`
     })
-    console.log(tableBody);
 }
-activeRows()
+
+window.addEventListener('hashchange', () => {
+    if (!window.location.hash) {
+        fullview.classList.remove("hidden!")
+        countryDetail.classList.add("hidden!")
+    }
+    else {
+        fullview.classList.add("hidden!")
+        countryDetail.classList.remove("hidden!")
+    }
+
+    const newHash = window.location.hash;
+    console.log('Hash is now:', newHash);
+});
 
 
 const debounce = (callback, delay) => {
@@ -168,12 +182,14 @@ function filterStatusWithCheckbox(countries) {
 }
 
 async function getCountrydata() {
-    const url = "https://restcountries.com/v3.1/all?fields=name,flags,population,area,region,subregion,independent,unMember"
+    const url = "https://restcountries.com/v3.1/all?fields=name,flags,population,area,region,subregion,independent,unMember,languages,capital"
+    const detailedData = "https://restcountries.com/v3.1/all?fields=borders,currencies,continents"
     try {
         const response = await fetch(url);
         if (!response.ok) {
             throw new Error(`error received: ${response.status} error`)
         }
+
         const result = await response.json();
         tableBody.innerHTML = "";
         result.sort((a, b) => b.population - a.population);
@@ -183,6 +199,8 @@ async function getCountrydata() {
         filterRegionsWithButtons(result);
         filterStatusWithCheckbox(result);
         searchFilter(result);
+        activeRows(result)
+
     }
     catch (error) {
         countriesFound.textContent = "Error fetching data"
