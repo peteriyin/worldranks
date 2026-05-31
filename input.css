@@ -2,8 +2,8 @@
 
 @theme {
   --breakpoint-*: initial;
-  --breakpoint-tablet: 64rem;
-  --breakpoint-desktop: 80rem;
+  --breakpoint-tablet: 36.06rem;
+  --breakpoint-desktop: 48rem;
 }
 
 @layer base {
